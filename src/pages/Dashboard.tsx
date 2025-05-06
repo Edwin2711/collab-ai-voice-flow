@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { getUser, clearUser } from "@/lib/auth";
 import { useEffect } from "react";
+import { Mic } from "lucide-react";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -48,9 +49,19 @@ const Dashboard = () => {
           <p className="text-gray-600 mb-4">
             Esta es una versión demo del dashboard. Próximamente más funcionalidades.
           </p>
-          <Button onClick={() => navigate("/meeting")}>
-            Nueva reunión
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Button onClick={() => navigate("/meeting")} className="flex items-center gap-2">
+              Nueva reunión
+            </Button>
+            <Button 
+              variant="secondary" 
+              onClick={() => navigate("/meeting")}
+              className="flex items-center gap-2"
+            >
+              <Mic className="h-4 w-4" />
+              Iniciar CollabCopilot Voice
+            </Button>
+          </div>
         </div>
       </main>
 
