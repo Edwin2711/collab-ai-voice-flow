@@ -1,15 +1,17 @@
 
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleGetStarted = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      alert("Funcionalidad en desarrollo. ¡Gracias por tu interés!");
+      navigate("/login");
     }, 1000);
   };
 
@@ -25,8 +27,8 @@ const LandingPage = () => {
             <h1 className="text-xl font-bold">CollabCopilot</h1>
           </div>
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="sm">Login</Button>
-            <Button size="sm">Registro</Button>
+            <Button variant="ghost" size="sm" onClick={() => navigate("/login")}>Login</Button>
+            <Button size="sm" onClick={() => navigate("/login")}>Registro</Button>
           </div>
         </div>
       </header>
@@ -51,7 +53,12 @@ const LandingPage = () => {
               >
                 {loading ? "Cargando..." : "Empezar ahora"}
               </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="text-lg px-8"
+                onClick={() => window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank")}
+              >
                 Ver demo
               </Button>
             </div>
@@ -111,7 +118,12 @@ const LandingPage = () => {
             <p className="text-xl text-gray-600 mb-8">
               Únete a cientos de equipos que ya disfrutan de reuniones más productivas con CollabCopilot.
             </p>
-            <Button size="lg" className="text-lg px-8" onClick={handleGetStarted} disabled={loading}>
+            <Button 
+              size="lg" 
+              className="text-lg px-8" 
+              onClick={handleGetStarted} 
+              disabled={loading}
+            >
               {loading ? "Cargando..." : "Comenzar gratis"}
             </Button>
           </div>
