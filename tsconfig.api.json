@@ -1,0 +1,30 @@
+// tsconfig.api.json (NUEVO ARCHIVO)
+{
+    "extends": "./tsconfig.json", // Hereda configuraciones base si quieres
+    "compilerOptions": {
+      /* --- Opciones Clave para Backend CJS --- */
+      "module": "CommonJS", // <-- Compilar a CommonJS
+      "moduleResolution": "Node", // <-- Resolución clásica de Node.js
+      "target": "ES2020", // Target razonable para Node.js en Vercel
+      "outDir": "dist", // Directorio de salida (Vercel podría ignorarlo/manejarlo, pero es bueno definirlo)
+      "sourceMap": true, // Útil para debugging
+      "declaration": false, // No necesitamos archivos .d.ts para la ejecución
+      "removeComments": true,
+      "isolatedModules": false, // No necesitamos esto para CJS backend
+      "esModuleInterop": true, // Permite importar módulos CJS/ESM más fácilmente
+      "forceConsistentCasingInFileNames": true,
+      "strict": false, // Ajusta según tus preferencias de strictness para el backend
+      "skipLibCheck": true, // Igual que en otros configs
+  
+      /* --- Anular o Asegurar que no haya conflicto --- */
+      "noEmit": false, // <-- IMPORTANTE: Necesitamos que TS compile el JS para el backend
+      "jsx": "react-jsx" // Mantener por si usas JSX en logs, etc., aunque no debería ser necesario
+    },
+    "include": [
+      "api/**/*.ts" // <-- Incluye todos los archivos TS dentro de la carpeta api
+    ],
+    "exclude": [
+      "node_modules",
+      "src" // Excluye explícitamente el código fuente del frontend
+    ]
+  }
